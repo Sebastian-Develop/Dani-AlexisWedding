@@ -1,57 +1,53 @@
-document.getElementById('imageUpload').addEventListener('change', function(event) {
-    const files = event.target.files;
-    const gallery = document.getElementById('imageGallery');
+document.addEventListener('DOMContentLoaded', () => {
+    const imageUpload = document.getElementById('imageUpload');
+    const imageGallery = document.getElementById('imageGallery');
     const lastImages = document.getElementById('lastImages');
     
-    // Clear the current gallery and last images
-    gallery.innerHTML = '';
-    lastImages.innerHTML = '';
+    const fetchImages = async () => {
+        const res = await fetch('http://localhost:5000/images');
+        const images = await res.json();
+        displayImages(images);
+    };
 
-    // Process each file
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const reader = new FileReader();
+    const displayImages = (images) => {
+        imageGallery.innerHTML = '';
+        lastImages.innerHTML = '';
 
-        reader.onload = function(e) {
+        images.forEach((filename, index) => {
             const img = document.createElement('img');
-            img.src = e.target.result;
-            img.alt = file.name;
+            img.src = `http://localhost:5000/uploads/${filename}`;
+            img.alt = 'Uploaded Image';
 
-            // Add image to the gallery
-            gallery.appendChild(img);
+            // Delete functionality
+            img.addEventListener('click', async () => {
+                await fetch(`http://localhost:5000/images/${filename}`, { method: 'DELETE' });
+                fetchImages();
+            });
+
+            imageGallery.appendChild(img);
 
             // Add image to the last images section
-            if (i >= files.length - 5) { // Show last 5 images
+            if (index >= images.length - 5) {
                 lastImages.appendChild(img.cloneNode());
             }
+        });
+    };
 
-            // Add click event to enlarge image
-            img.addEventListener('click', function() {
-                const modal = document.createElement('div');
-                modal.style.position = 'fixed';
-                modal.style.top = '0';
-                modal.style.left = '0';
-                modal.style.width = '100%';
-                modal.style.height = '100%';
-                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                modal.style.display = 'flex';
-                modal.style.alignItems = 'center';
-                modal.style.justifyContent = 'center';
+    imageUpload.addEventListener('change', async (event) => {
+        const files = event.target.files;
+        const formData = new FormData();
 
-                const modalImg = document.createElement('img');
-                modalImg.src = e.target.result;
-                modalImg.style.maxWidth = '90%';
-                modalImg.style.maxHeight = '90%';
-                modal.appendChild(modalImg);
+        Array.from(files).forEach(file => {
+            formData.append('images', file);
+        });
 
-                modal.addEventListener('click', function() {
-                    document.body.removeChild(modal);
-                });
+        await fetch('http://localhost:5000/upload', {
+            method: 'POST',
+            body: formData
+        });
 
-                document.body.appendChild(modal);
-            });
-        };
+        fetchImages();
+    });
 
-        reader.readAsDataURL(file);
-    }
+    fetchImages();
 });
