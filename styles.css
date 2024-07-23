@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-color: #f9f9f9;
+    background-color: #fdf6ed;
     color: #4a4a4a;
 }
 
@@ -21,7 +21,7 @@ header::before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-position-y: 30%; /* Verschiebt das Bild nach unten */
+    background-position-y: top; /* Zeigt das obere Teil des Bildes */
 }
 
 nav {
@@ -108,6 +108,17 @@ nav button {
     margin: 1rem 0;
 }
 
+.timeline {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #fdf6ed;
+}
+
+.timeline img {
+    width: 100%;
+    max-width: 800px;
+}
+
 .about-us {
     text-align: center;
     padding: 3rem 2rem;
@@ -120,9 +131,19 @@ nav button {
     margin-bottom: 1rem;
 }
 
-.gallery-upload, .show-last-images {
+.gallery-upload {
     text-align: center;
     padding: 2rem 2rem;
+}
+
+.upload-button {
+    display: inline-block;
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .gallery {

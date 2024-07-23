@@ -37,13 +37,17 @@
             <p>Lorem ipsum ist seit den 1500er Jahren der Standard für Blindtexte.</p>
         </div>
     </section>
+    <section class="timeline">
+        <img src="path_to_timeline_image.png" alt="Timeline">
+    </section>
     <section class="about-us">
         <h2>Wir Heiraten</h2>
         <p>Es gibt viele Variationen von Lorem Ipsum, aber die meisten haben Änderungen erfahren, sei es durch Humor oder zufällige Wörter, die nicht einmal annähernd glaubwürdig aussehen. Alle Lorem Ipsum Generatoren neigen dazu, vorgegebene Stücke zu verwenden, wenn nötig.</p>
     </section>
     <section class="gallery-upload">
         <h2>Galerie</h2>
-        <input type="file" id="imageUpload" multiple>
+        <label for="imageUpload" class="upload-button">Bilder Hochladen</label>
+        <input type="file" id="imageUpload" multiple style="display:none;">
         <div id="imageGallery" class="gallery"></div>
     </section>
     <section class="show-last-images">
