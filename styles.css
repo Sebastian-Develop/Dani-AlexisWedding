@@ -21,6 +21,7 @@ header::before {
     width: 100%;
     height: 100%;
     z-index: -1;
+    background-position-y: 30%; /* Verschiebt das Bild nach unten */
 }
 
 nav {
@@ -88,7 +89,7 @@ nav button {
     display: flex;
     justify-content: space-around;
     padding: 3rem 2rem;
-    background-color: #f3f3f3;
+    background-color: #f4e9eb;
     color: #000;
 }
 
