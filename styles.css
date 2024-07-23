@@ -1,13 +1,15 @@
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Georgia', serif;
     background-color: #f9f9f9;
+    color: #4a4a4a;
 }
 
 header {
     position: relative;
-    height: 70vh;
+    height: 100vh;
     color: #fff;
+    text-align: center;
 }
 
 header::before {
@@ -19,7 +21,6 @@ header::before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.6; /* optional: to make the text more readable */
 }
 
 nav {
@@ -34,12 +35,14 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 nav button {
@@ -56,33 +59,36 @@ nav button {
     align-items: center;
     justify-content: center;
     height: 100%;
-    text-align: center;
     z-index: 1;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 0;
+    font-family: 'Georgia', serif;
+    font-weight: normal;
 }
 
 .hero p {
     font-size: 1.5rem;
+    margin: 0.5rem 0 1rem 0;
+    font-family: 'Georgia', serif;
 }
 
 .hero button {
-    margin-top: 1rem;
     background-color: #fff;
     color: #000;
     border: none;
     padding: 0.5rem 2rem;
     cursor: pointer;
+    font-family: 'Georgia', serif;
 }
 
 .features {
     display: flex;
     justify-content: space-around;
     padding: 3rem 2rem;
-    background-color: #fff;
+    background-color: #f3f3f3;
     color: #000;
 }
 
@@ -91,15 +97,20 @@ nav button {
     text-align: center;
 }
 
+.feature img {
+    width: 50px;
+    height: 50px;
+}
+
 .feature h2 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
 .about-us {
     text-align: center;
     padding: 3rem 2rem;
-    background-color: #f0f0f0;
+    background-color: #fff;
     color: #000;
 }
 
