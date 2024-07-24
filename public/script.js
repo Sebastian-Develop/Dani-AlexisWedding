@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastImages = document.getElementById('lastImages');
     
     const fetchImages = async () => {
-        const res = await fetch('http://localhost:5000/images');
+        const res = await fetch('/images');
         const images = await res.json();
         displayImages(images);
     };
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         images.forEach((filename, index) => {
             const img = document.createElement('img');
-            img.src = `http://localhost:5000/uploads/${filename}`;
+            img.src = `/uploads/${filename}`;
             img.alt = 'Uploaded Image';
 
             // Delete functionality
             img.addEventListener('click', async () => {
-                await fetch(`http://localhost:5000/images/${filename}`, { method: 'DELETE' });
+                await fetch(`/images/${filename}`, { method: 'DELETE' });
                 fetchImages();
             });
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('images', file);
         });
 
-        await fetch('http://localhost:5000/upload', {
+        await fetch('/upload', {
             method: 'POST',
             body: formData
         });
