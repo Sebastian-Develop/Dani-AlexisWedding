@@ -6,11 +6,20 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001; // Ändere hier den Port
 
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
+
+// Serve static HTML files
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/gallery.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'gallery.html'));
+});
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({

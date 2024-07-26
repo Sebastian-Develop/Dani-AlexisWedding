@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allImages = document.getElementById('allImages');
 
     const fetchImages = async () => {
-        const res = await fetch('/images');
+        const res = await fetch('http://test-emptysoul.bplaced.net:5001/Dani-AlexisWedding/images'); // Update this URL
         const images = await res.json();
         displayImages(images);
     };
@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         images.slice(-5).forEach(filename => {
             const img = document.createElement('img');
-            img.src = `/uploads/${filename}`;
+            img.src = `http://test-emptysoul.bplaced.net:5001/Dani-AlexisWedding/uploads/${filename}`; // Update this URL
             img.alt = 'Uploaded Image';
             highlightedImages.appendChild(img);
         });
 
         images.forEach(filename => {
             const img = document.createElement('img');
-            img.src = `/uploads/${filename}`;
+            img.src = `http://test-emptysoul.bplaced.net:5001/Dani-AlexisWedding/uploads/${filename}`; // Update this URL
             img.alt = 'Uploaded Image';
             allImages.appendChild(img);
         });
