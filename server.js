@@ -3,6 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,7 +34,7 @@ app.get('/images', (req, res) => {
 });
 
 // Upload images
-app.post('/upload', upload.array('images', 10), (req, res) => {
+app.post('/upload', upload.array('file', 10), (req, res) => {
     res.json(req.files.map(file => file.filename));
 });
 
@@ -45,6 +46,33 @@ app.delete('/images/:filename', (req, res) => {
             return res.status(500).json({ message: 'Error deleting file' });
         }
         res.json({ message: 'File deleted' });
+    });
+});
+
+// RSVP form submission
+app.post('/rsvp', (req, res) => {
+    const { firstName, lastName } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'hotmail',
+        auth: {
+            user: 'your_email@hotmail.com',
+            pass: 'your_email_password'
+        }
+    });
+
+    const mailOptions = {
+        from: 'your_email@hotmail.com',
+        to: 'sebastianr.p2000@hotmail.com',
+        subject: 'RSVP zur Hochzeit',
+        text: `Name: ${firstName} ${lastName}\nHat die Teilnahme bestätigt.`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.status(500).json({ message: 'Error sending email' });
+        }
+        res.json({ message: 'Email sent: ' + info.response });
     });
 });
 

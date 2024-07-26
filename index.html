@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danielas und Alexis Hochzeit</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- DropzoneJS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#">Galerie</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="gallery.html">Galerie</a></li>
             </ul>
             <button>Veranstaltungsort</button>
         </nav>
@@ -46,14 +49,28 @@
     </section>
     <section class="gallery-upload">
         <h2>Galerie</h2>
-        <label for="imageUpload" class="upload-button">Bilder Hochladen</label>
-        <input type="file" id="imageUpload" multiple style="display:none;">
-        <div id="imageGallery" class="gallery"></div>
+        <form action="/upload" class="dropzone" id="demo-upload">
+            <div class="dz-message needsclick">    
+                Drop files here or click to upload.<br>
+                <span class="note needsclick">(Selected files are actually uploaded.)</span>
+            </div>
+        </form>
     </section>
     <section class="show-last-images">
         <h2>Letzte Bilder</h2>
         <div id="lastImages" class="gallery"></div>
     </section>
+    <footer>
+        <h2>RSVP zur Hochzeit</h2>
+        <form id="rsvpForm">
+            <label for="firstName">Vorname:</label>
+            <input type="text" id="firstName" name="firstName" required><br>
+            <label for="lastName">Nachname:</label>
+            <input type="text" id="lastName" name="lastName" required><br>
+            <button type="submit">Ich bestätige, dass ich zur Hochzeit komme</button>
+        </form>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

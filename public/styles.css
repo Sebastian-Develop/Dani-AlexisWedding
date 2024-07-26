@@ -14,7 +14,7 @@ header {
 
 header::before {
     content: "";
-    background: url('pics/IMG_0124.HEIC') no-repeat center top/cover;
+    background: url('../pics/IMG_0124.jpg') no-repeat center top/cover;
     position: absolute;
     top: 0;
     left: 0;
