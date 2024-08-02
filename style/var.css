@@ -1,0 +1,10 @@
+:root {
+    --border-radius--default: 24px;
+    --transition--default: all .3s ease;
+
+    /* colors */
+    --color-white: #fff;
+    --color-pink--transparent: #f8e5e555;
+    --color-pink-dark--transparent: #c4b3b355;
+    --color-pink: #f8e5e5;
+}
